@@ -32,7 +32,7 @@ module Grit
     def self.find_all(repo, ref, options = {})
       allowed_options = [:max_count, :skip, :since]
 
-      default_options = {:numstat => true}
+      default_options = {:numstat => true, :m => true}
       actual_options = default_options.merge(options)
 
       if ref
