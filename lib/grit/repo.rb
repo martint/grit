@@ -500,7 +500,8 @@ module Grit
     #   +paths+ is an optional list of file paths on which to restrict the diff
     def diff(a, b, *paths)
       # :M => true is for detecting renames
-      diff = self.git.native('diff', {:M => true}, a, b, '--', *paths)
+      options = {:M => true, :full_index => true}
+      diff = self.git.native('diff', options, a, b, '--', *paths)
 
       if diff =~ /diff --git a/
         diff = diff.sub(/.*?(diff --git a)/m, '\1')
